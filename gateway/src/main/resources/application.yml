@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: gateway
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 2000MB
+      max-request-size: 2500MB
+server:
+  port: 9501
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:9001/eureka/,http://peer2:9002/eureka/
+
+zuul:
+  #  忽略的服务
+  ignored-services: '*'
+  #  前缀
+  prefix: /api
+  #  敏感header
+  sensitive-headers: Cookie,Set-Cookie,Authorization
+  routes:
+    attachment: /atta/**
+    feign-client: /fc/**
+
+#这里为attachment附件服务配置单独的超时时间
+hystrix:
+  command:
+    attachment:
+      execution.isolation.thread.timeoutInMilliseconds: 180000
+attachment:
+  ribbon:
+    ConnectTimeout: 3000
+    ReadTimeout: 60000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+

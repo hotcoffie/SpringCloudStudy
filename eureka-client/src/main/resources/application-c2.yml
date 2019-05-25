@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: hello-service
+
+server:
+  port: 9102
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9002/eureka/
+
+#actuator端口
+management:
+  server:
+    port: 9102

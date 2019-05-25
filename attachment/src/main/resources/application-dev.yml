@@ -1,0 +1,16 @@
+server:
+  port: 9601
+spring:
+  datasource:
+    name: wiki
+#    url: jdbc:mysql://192.168.0.119:3306/wiki?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://10.165.2.116:3306/wiki?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123456
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:9001/eureka/,http://peer2:9002/eureka/
+attachment:
+  path: E:\JAVA\workspace\SpringCloudStudy02\fujian
+
